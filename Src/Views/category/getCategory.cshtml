@@ -1,0 +1,158 @@
+﻿@model PagedList.IPagedList<DesignWeb_Project.Models.ProductModel>
+@using PagedList.Mvc;
+@{ string html = ".html"; }
+@{
+    foreach (var item in ViewBag.getCate)
+    {
+        ViewBag.Title = item.Category_Name;
+
+        if (item.MetaTitle != null)
+        {
+            ViewBag.MetaTittes = item.MetaTitle;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaTittes = meta.MetaTitle;
+            }
+
+        }
+        if (item.MetaKeyword != null)
+        {
+            ViewBag.MetaKeyword = item.MetaKeyword;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaKeyword = meta.MetaKeyword;
+            }
+
+        }
+        if (item.MetaDescription != null)
+        {
+            ViewBag.MetaDescription = item.MetaDescription;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaDescription = meta.MetaDescription;
+            }
+
+        }
+
+    }
+}
+
+<div class="inner-banner">
+    <div class="opacity">
+        <div class="container">
+            @foreach (var item in ViewBag.getCate)
+            {
+                <h2 title="@item.Category_Name" class="float-left">@item.Category_Name</h2>
+            }
+
+            <ul class="float-right">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                <li>/</li>
+                @foreach (var item in ViewBag.getCate)
+                {
+                    <li class="active">@item.Category_Name</li>
+                }
+            </ul>
+        </div> <!-- /.container -->
+    </div> <!-- /.opacity -->
+</div>
+
+<section id="category-wrapper" style="margin-top: 30px;">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+
+                <div class="blog-sidebar">
+
+                    <div class="list-categories">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Danh mục bài viết
+                            </h3>
+                        </div>
+                        <ul class="no-bullets">
+
+                            @foreach (var blogdm in ViewBag.all_danhmuc)
+                            {
+                                <li class="">
+                                    <a href="/blogs/@blogdm.Alias-@blogdm.BlogID@html"><i class="fa fa-angle-double-right"></i> @blogdm.BlogName</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="all-tags">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Bài viết mới nhất
+                            </h3>
+                        </div>
+                        <div class="all-blog-new clearfix">
+
+                            @foreach (var newblog in ViewBag.getBlogNew)
+                            {
+                                <div class="row col-span-blog-new">
+                                    <div class="col-xs-4">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html"><img src="@newblog.Images" alt=""></a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html" class="title_new_blogs">@newblog.ArticleName</a>
+                                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> @newblog.CreatedAt</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+
+                <div class="section-title clearfix">
+                    <div class="title">
+                        @foreach (var item in ViewBag.getCate)
+                        {
+                            <h2 title="@item.Category_Name">@item.Category_Name</h2>
+                        }
+                    </div>
+                    <div class="line"></div>
+                </div>
+
+                <div class="category-content">
+                    <div class="row">
+                        @{
+                            int i = 0;
+                            foreach (var product in Model)
+                            {
+                                i += 1;
+                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                    <div class="product-image">
+                                        <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><img src="@product.Images" alt="@product.ProductName"></a>
+                                    </div>
+                                    <div class="product-action">
+                                        <h3 class="product-name"><a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html">@product.ProductName</a></h3>
+                                        <p class="description">@product.DescriptShort</p>
+                                    </div>
+                                </div>
+                                if (i % 3 == 0)
+                                {
+                                    <div class="clear-fix"></div>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,95 @@
+﻿@model List<DesignWeb_Project.Areas.Admin.Models.DataModel.Configure>
+
+@foreach (var item in Model)
+{
+
+<div class="inner-banner">
+    <div class="opacity">
+        <div class="container">
+            <h2 title="Liên hệ" class="float-left">Liên hệ</h2>
+            <ul class="float-right">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                <li>/</li>
+                <li class="active">Liên hệ</li>
+            </ul>
+        </div> <!-- /.container -->
+    </div> <!-- /.opacity -->
+</div>
+
+<div class="contact-us-page">
+    <div class="container">
+        <div class='text-center alert alert-warning alert-sm' style="display:none;@TempData["displaycontact"]">
+            @TempData["thankyou"]
+        </div>
+
+        <h2 title="THÔNG TIN LIÊN HỆ" class="thongtinlienhe_title">THÔNG TIN LIÊN HỆ</h2>
+
+        <div class="contact-map">
+
+            <p class="text-center">
+                @Html.Raw(item.Map)
+            </p>
+        </div>
+
+        <div class="contact-body">
+            <div id="layout-page">
+                <div class="row content-contact content-page">
+
+                    <div class="col-md-7" id="col-left contactFormWrapper">
+                        <h3 class="page-top-title">Viết nhận xét</h3>
+                        <p>
+                            Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn sớm nhất có thể .
+                        </p>
+                        <form accept-charset="UTF-8" action="/home/AddContact" class="contact-form" method="post">
+
+                            <div class="form-group">
+                                <label for="contactFormName" class="sr-only">Tên</label>
+                                <input required="" type="text" id="contactFormName" class="form-control input-lg" name="fullname" placeholder="Tên của bạn" autocapitalize="words" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactFormEmail" class="sr-only">Email</label>
+                                <input required="" type="email" name="email" placeholder="Email của bạn" id="contactFormEmail" class="form-control input-lg" autocorrect="off" autocapitalize="off" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="contactFormEmail" class="sr-only">Số điện thoại</label>
+                                <input required="" type="number" name="phone" placeholder="Số điện thoại của bạn" id="contactFormEmail" class="form-control input-lg" autocorrect="off" autocapitalize="off" value="">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactFormMessage" class="sr-only">Nội dung</label>
+                                <textarea required="" rows="6" name="content_comment" class="form-control" placeholder="Viết bình luận" id="contactFormMessage"></textarea>
+                            </div>
+
+                            <input type="submit" class="btn btn-primary btn-lg" value="Gửi liên hệ">
+                        </form>
+                    </div>
+                    <div class="col-md-5" id="col-right">
+                        <h3 class="page-top-title">THÔNG TIN CHI TIẾT</h3>
+                        <h3 class="name-company">@item.NameCompany</h3>
+                        <p>	@item.Description	</p>
+                        <ul class="info-address">
+                            <li>
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                                <span>@item.Address</span>
+                            </li>
+                            <li>
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                <span>@item.Email</span>
+                            </li>
+                            <li>
+                                <i class="glyphicon glyphicon-phone-alt"></i>
+                                <span>Hotline: @item.Hotline</span>
+                            </li>
+                            <li>
+                                <i class="glyphicon glyphicon-phone-alt"></i>
+                                <span>Phone: @item.Phone</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}

@@ -1,0 +1,223 @@
+﻿@model List<DesignWeb_Project.Models.BlogModel>
+
+@{      string html = ".html"; }
+@{
+    foreach (var item in Model)
+    {
+        ViewBag.Title = item.ArticleName;
+        if (item.MetaTitle_ar != null)
+        {
+            ViewBag.MetaTittes = item.MetaTitle_ar;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaTittes = meta.MetaTitle;
+            }
+
+        }
+        if (item.MetaKeyword_ar != null)
+        {
+            ViewBag.MetaKeyword = item.MetaKeyword_ar;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaKeyword = meta.MetaKeyword;
+            }
+
+        }
+        if (item.MetaDescription_ar != null)
+        {
+            ViewBag.MetaDescription = item.MetaDescription_ar;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaDescription = meta.MetaDescription;
+            }
+
+        }
+    }
+
+}
+
+
+
+<div class="inner-banner">
+    <div class="opacity">
+        <div class="container">
+            @foreach (var item in ViewBag.getNameBlog)
+            {
+                <h2 title="@item.BlogName" class="float-left">@item.BlogName</h2>
+            }
+            <ul class="float-right">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                <li>/</li>
+                @foreach (var item in ViewBag.getNameBlog)
+                {
+                    <li><a href="/blogs/@item.Alias_Blog-@item.BlogID@html">@item.BlogName</a></li>
+                }
+                <li>/</li>
+                @foreach (var item in Model)
+                {
+                    <li class="active">@item.ArticleName</li>
+                }
+            </ul>
+        </div> <!-- /.container -->
+    </div> <!-- /.opacity -->
+</div>
+
+
+
+
+
+
+<div class="article_content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+        @foreach (var tin in Model)
+        {
+                <div class="article-head">
+                    <h1>@tin.ArticleName</h1>
+                    <div class="grid mg-left-15">
+                        <div class="grid__item large--one-half medium--one-half small--one-half pd-left15">
+                            <div class="article-date-comment">
+                                <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> @tin.CreatedAt</div>
+                                <div class="author">
+                                    <i class="fa fa-user" aria-hidden="true"></i> @tin.Author
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="grid__item large--one-half medium--one-half small--one-half pd-left15">
+                            <div class="social-network-actions text-right">
+                                <div class="fb-send" data-href=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="article-content" style="margin-top:20px;text-align:justify;">
+                    @Html.Raw(tin.Content)
+                </div>
+
+
+
+                <div class="related-articles">
+                    <div class="related-articles-head">
+                        <h3>
+                            Các bài viết liên quan
+                        </h3>
+                    </div>
+                    <div class="related-articles-body">
+                        <ul class="no-bullets">
+
+
+                            @foreach (var related in ViewBag.article_related)
+                            {
+                                if (tin.Alias_Article != related.Alias_Article)
+                                {
+                                <li>
+                                    <a href="/blogs/@related.Alias_Blog/@related.Alias_Article-@related.BlogID-@related.ArticleID@html">@related.ArticleName</a>
+                                </li>
+                                }
+                            }
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+        }
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="blog-sidebar">
+
+
+
+                    <div class="list-categories">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Danh sách sản phẩm
+                            </h3>
+                        </div>
+                        <ul class="no-bullets">
+
+
+                            @foreach (var product in ViewBag.product_blog)
+                            {
+                                <li class="">
+                                    <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><i class="fa fa-angle-double-right"></i> @product.ProductName</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+
+
+
+                    <div class="list-categories">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Danh mục bài viết
+                            </h3>
+                        </div>
+                        <ul class="no-bullets">
+
+
+                            @foreach (var blogdm in ViewBag.all_danhmuc)
+                            {
+                                <li class="">
+                                    <a href="/blogs/@blogdm.Alias-@blogdm.BlogID@html"><i class="fa fa-angle-double-right"></i> @blogdm.BlogName</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+
+
+                    <div class="all-tags">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Bài viết mới nhất
+                            </h3>
+                        </div>
+                        <div class="all-blog-new clearfix">
+
+                            @foreach (var newblog in ViewBag.getBlogNew)
+                            {
+                                <div class="row col-span-blog-new">
+                                    <div class="col-xs-4">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html"><img src="@newblog.Images" alt=""></a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html" class="title_new_blogs">@newblog.ArticleName</a>
+                                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> @newblog.CreatedAt</p>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

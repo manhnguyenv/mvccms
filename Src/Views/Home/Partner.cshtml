@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DesignWeb_Project.Areas.Admin.Models.DataModel.Slide>
+
+<div class="container">
+    <div class="title_partner">
+        <h2 title="Đối tác">Đối tác </h2>
+    </div>
+    <div id="partner_vendor">
+        @{ int i = 1;}
+        @foreach (var item in Model)
+        {
+            if (item.Images != null)
+            {
+                <div class="item">
+                    <a href="@item.URL"><img src="@item.Images" alt="doitac@i"></a>
+                </div>
+                i++;
+            }
+        }
+    </div>
+</div>

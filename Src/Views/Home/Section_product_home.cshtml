@@ -1,0 +1,56 @@
+﻿@foreach (var item in ViewBag.all_data_config)
+{
+    if (item.on_product_home == true)
+    {
+
+        string html = ".html";
+
+<div class="product_service">
+    <div class="container">
+        <div class="title_block_product">
+            <h2 class="titles">
+                @item.title_product_home
+            </h2>
+        </div>
+        <div id="product_owl_home">
+
+            @if (item.collection_product_home == 0)
+            {
+                foreach (var product in ViewBag.all_product_home)
+                {
+
+                    <div class="item">
+                        <div class="image-block">
+                            <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><img class="product-image" src="@product.Images" alt="img1" /></a>
+                        </div>
+                        <h3 class="title_product">@product.ProductName</h3>
+                        <p class="txt_description">@product.DescriptShort</p>
+                    </div>
+                }
+            }
+            else
+            {
+
+                foreach (var product in ViewBag.product_home)
+                {
+
+                    <div class="item">
+                        <div class="image-block">
+                            <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><img class="product-image" src="@product.Images" alt="img1" /></a>
+                        </div>
+                        <h3 class="title_product">@product.ProductName</h3>
+                        <p class="txt_description">@product.DescriptShort</p>
+                    </div>
+                }
+            }
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+    }
+}

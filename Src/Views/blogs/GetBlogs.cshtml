@@ -1,0 +1,252 @@
+﻿@model PagedList.IPagedList<DesignWeb_Project.Models.BlogModel>
+@using PagedList.Mvc;
+@{      string html = ".html"; }
+@{
+    foreach (var item in ViewBag.getNameBlog)
+    {
+        ViewBag.Title = item.BlogName;
+
+
+
+
+
+
+
+        if (item.MetaTitle != null)
+        {
+            ViewBag.MetaTittes = item.MetaTitle;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaTittes = meta.MetaTitle;
+            }
+
+        }
+        if (item.MetaKeyword != null)
+        {
+            ViewBag.MetaKeyword = item.MetaKeyword;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaKeyword = meta.MetaKeyword;
+            }
+
+        }
+        if (item.MetaDescription != null)
+        {
+            ViewBag.MetaDescription = item.MetaDescription;
+        }
+        else
+        {
+            foreach (var meta in ViewBag.config_meta)
+            {
+                ViewBag.MetaDescription = meta.MetaDescription;
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="inner-banner">
+    <div class="opacity">
+        <div class="container">
+            @foreach (var item in ViewBag.getNameBlog)
+            {
+                <h2 title="@item.BlogName" class="float-left">@item.BlogName</h2>
+            }
+
+            <ul class="float-right">
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                <li>/</li>
+                @foreach (var item in ViewBag.getNameBlog)
+                {
+                    <li class="active">@item.BlogName</li>
+                }
+            </ul>
+        </div> <!-- /.container -->
+    </div> <!-- /.opacity -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="blog-wrapper" class="in-blog">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <div class="blog-sidebar">
+
+
+
+                    <div class="list-categories">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Danh sách sản phẩm
+                            </h3>
+                        </div>
+                        <ul class="no-bullets">
+
+                            @foreach (var product in ViewBag.product_blog)
+                            {
+                                <li class="">
+                                    <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><i class="fa fa-angle-double-right"></i> @product.ProductName</a>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                    </div>
+
+
+
+
+                    <div class="list-categories">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Danh mục bài viết
+                            </h3>
+                        </div>
+                        <ul class="no-bullets">
+
+                            @foreach (var blogdm in ViewBag.all_danhmuc)
+                            {
+                                <li class="">
+                                    <a href="/blogs/@blogdm.Alias-@blogdm.BlogID@html"><i class="fa fa-angle-double-right"></i> @blogdm.BlogName</a>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                    </div>
+
+
+
+                    <div class="all-tags">
+                        <div class="blog-sb-title clearfix">
+                            <h3>
+                                Bài viết mới nhất
+                            </h3>
+                        </div>
+                        <div class="all-blog-new clearfix">
+
+
+
+                            @foreach (var newblog in ViewBag.getBlogNew)
+                            {
+                                <div class="row col-span-blog-new">
+                                    <div class="col-xs-4">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html"><img src="@newblog.Images" alt=""></a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID@html" class="title_new_blogs">@newblog.ArticleName</a>
+                                        <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> @newblog.CreatedAt</p>
+                                    </div>
+                                </div>
+                            }
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="section-title clearfix">
+                    <div class="title">
+                        @foreach (var item in ViewBag.getNameBlog)
+                        {
+                            <h2 title="@item.BlogName">@item.BlogName</h2>
+                        }
+
+                    </div>
+                    <div class="line"></div>
+                </div>
+
+
+                <div class="blog-content">
+                    <div class="row">
+
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var article in Model)
+                            {
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="ha-item">
+                                    <div class="ha-img">
+                                        <a href="/blogs/@article.Alias_Blog/@article.Alias_Article-@article.BlogID-@article.ArticleID@html">
+                                            <img src="@article.Images" alt="@article.ArticleName">
+                                        </a>
+                                    </div>
+                                    <div class="ha-title">
+                                        <a href="/blogs/@article.Alias_Blog/@article.Alias_Article-@article.BlogID-@article.ArticleID@html">@article.ArticleName</a>
+                                    </div>
+                                    <div class="ha-comment-date">
+                                        <div class="article-date">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i> @article.CreatedAt
+                                        </div>
+                                        <div class="article-author">
+                                            <i class="fa fa-user" aria-hidden="true"></i> @article.Author
+                                        </div>
+                                    </div>
+                                    <div class="ha-desc">
+
+                                        @article.DescriptShort
+
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        }else
+                        {
+                            <p class="text-center" style="color:red;">Hiện tại dữ liệu chúng tôi đang cập nhật dữ liệu...</p>
+                        }
+
+
+                    @if (Model.Count > 0)
+                    {
+                        <div class="content_pagination" style="clear:both;">
+                            <div id="pagination" class="clearfix text-center">
+                                @Html.PagedListPager(Model, page => Url.Action("GetBlogs", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                            </div>
+                        </div>
+                    }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

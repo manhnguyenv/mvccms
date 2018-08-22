@@ -1,0 +1,295 @@
+﻿@model DesignWeb_Project.Areas.Admin.Models.DataModel.Product
+
+@{
+    ViewBag.Title = "Tạo Mới sản phẩm";
+}
+
+<div class="curd" style="margin-right:70px;width:100%;">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data", id = "form-create-product" }))
+    {
+
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <div class="breadcrumb">
+                <div class="breadcrumb-left">
+                    <i class="menu-icon fa fa-user" aria-hidden="true"></i>
+                    <a href="~/Admin/Products" class="title_bread"> Danh sách sản phẩm</a>
+                    <span style="color:#ccc;margin:0px 15px;font-size:20px;"> /</span>
+                    <span class="title_bread"> Thêm Mới</span>
+                </div>
+                <div class="breadcrumb-add">
+                    @Html.ActionLink("Hủy", "Index", "", new { @class = "btn btn-default" })
+                    <input type="submit" value="Lưu Lại" class="btn btn-primary" />
+                </div>
+            </div><!-- /.breadcrumb -->
+        </div>
+
+        <div class="createandedit">
+
+            <div class="row">
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p style="color:red;font-weight:bold;text-align:center;">@ViewBag.check_name</p>
+                <p style="color:red;font-weight:bold;text-align:center;">@ViewBag.check_alias</p>
+                <p style="color:red;font-weight:bold;text-align:center;">@ViewBag.errorkey</p>
+
+                <div class="col-xs-12 col-md-8">
+
+                    <div class="editcreate">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label" })
+
+                                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label" })
+
+                                @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DescriptShort, htmlAttributes: new { @class = "control-label" })
+
+                            @Html.TextAreaFor(model => model.DescriptShort, new { htmlAttributes = new { @class = "form-control" }, rows = "4" })
+                            @Html.ValidationMessageFor(model => model.DescriptShort, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label" })
+
+                                @Html.TextAreaFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
+                                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Content2, htmlAttributes: new { @class = "control-label" })
+
+                            @Html.TextAreaFor(model => model.Content2, new { htmlAttributes = new { @class = "form-control txtContext" }, id = "txtContent2" })
+                            @Html.ValidationMessageFor(model => model.Content2, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Content3, htmlAttributes: new { @class = "control-label" })
+
+                            @Html.TextAreaFor(model => model.Content3, new { htmlAttributes = new { @class = "form-control txtContext" }, id = "txtContent3" })
+                            @Html.ValidationMessageFor(model => model.Content3, "", new { @class = "text-danger" })
+                        </div>
+                        </div>
+
+                        <div class="seo_des">
+                            <div class="pen-top">
+                                <div class="pull-left txt_left1">Tối ưu SEO</div>
+
+                                <div class="pull-right txt_left2">Chỉnh sửa SEO</div>
+
+                                <p class="text_set">Thiết lập các thẻ mô tả giúp khách hàng dễ dàng tìm thấy danh mục này trên công cụ tìm kiếm như Google.</p>
+
+                                <div class="input_telier">
+                                    <div class="form-group ten-seo">
+                                        @Html.LabelFor(model => model.MetaTitle, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.MetaTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MetaTitle, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group ten-seo">
+                                        @Html.LabelFor(model => model.MetaKeyword, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.MetaKeyword, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MetaKeyword, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="form-group ten-seo">
+                                        @Html.LabelFor(model => model.MetaDescription, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextAreaFor(model => model.MetaDescription, new { htmlAttributes = new { @class = "form-control" },rows="4" })
+                                        @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-xs-12 col-md-4">
+                    <div class="visible-status">
+                        <p class="title_st">Hiển thị</p>
+                        <div class="check-st">
+                            <div class="show-st">
+                                <input type="radio" name="status_mi" value="true" checked /> <span class="hideshow">Hiện</span>
+                            </div>
+                            <div class="show-st">
+                                <input type="radio" name="status_mi" value="false" /> <span class="hideshow">Ẩn</span>
+                            </div>
+                        </div>
+
+                        <div class="time-stamp">
+                            <p class="title_sts"> Thời Gian:</p>
+                            <input type="text" value="@DateTime.Now" disabled />
+                        </div>
+                    </div>
+
+                    <div class="bot-des-more">
+                        <h3 class="title_pl">Phân loại</h3>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CategoryID, "Nhón Sản Phẩm", htmlAttributes: new { @class = "control-label" })
+                            <span class="custom-dropdown custom-dropdown-white">
+                                @Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control custom-dropdown-select" })
+                            </span>
+                                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+</div>
+                    </div>
+
+                    <div class="image-avatar">
+                        <p class="title_anh">Ảnh đại diện</p>
+
+                        <div class="frame-image">
+                            <div class="noset-image">
+                                <div class="select-image"><i class="fa fa-picture-o" aria-hidden="true"></i><br />Chọn hình</div>
+                                <input type="hidden" id="hidProductID" value="" name="Images" />
+                            </div>
+
+                            <div id="showImage">
+                                <img id="image_showed" width="100%" />
+                                <a class="delete_imgavt" href="javascript::0">Xóa hình</a>
+                            </div>
+                        </div>
+
+                        <a href="javascript::0" class="change_image">Thay hình ảnh</a>
+                    </div>
+                </div>
+                    </div>
+            </div>
+
+            <div class="text-left" style="margin-top:20px;">
+                <i class="fa fa-angle-double-left" aria-hidden="true" style="color:red !important;"></i>  @Html.ActionLink("Trở lại trang trước", "Index", "", new { style = "color:red;font-size:12px;" })
+            </div>
+
+                    }
+                </div>
+
+<script type="text/javascript">
+function performClick(elemId) {
+   var elem = document.getElementById(elemId);
+   if(elem && document.createEvent) {
+      var evt = document.createEvent("MouseEvents");
+      evt.initEvent("click", true, false);
+      elem.dispatchEvent(evt);
+   }
+}
+</script>
+
+@*<script type="text/javascript">
+function performClick2(elemId) {
+   var elem = document.getElementById(elemId);
+   if(elem && document.createEvent) {
+      var evt = document.createEvent("MouseEvents");
+      evt.initEvent("click", true, false);
+      elem.dispatchEvent(evt);
+   }
+}
+</script>*@
+
+@*<script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    $('.noset-image').hide();
+                    $('.change_image').css("display","block");
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#image_showed')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+</script>*@
+
+<script>
+    var loadFile = function (event) {
+        $('.jiuos').hide();
+        $("#showme").html("");
+            var files = event.target.files;
+            for (var i = 0; i < files.length; i++) {
+                $("#showme").append("<div class='more_img'>  <img src='" + URL.createObjectURL(event.target.files[i]) + "' class='img_pro' /></div>");
+
+                $('.remove_images').click(function () {
+                    $(this).next('.img_pro').remove();
+                    $(this).remove();
+                });
+
+                $('.more_img').hover(function () {
+                    $(this).find("a").show();
+                },
+                function () {
+                    $(this).find("a").hide();
+                });
+
+            }
+    }
+</script>
+
+@*<script>
+
+        $('#uploadFile').change(function () {
+            var fileUpload = $('#uploadFile').get(0);
+            var files = fileUpload.files;
+            var formData = new FormData();
+            formData.append("fileproductmore", files[0]);
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("inserImageMore")',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (urlImage) {
+                    $("#showme").append("<div class='more_img'> <a class='remove_images' href='javascript::0'><i class='fa fa-trash-o' aria-hidden='true'></i> Xóa</a> <img src=/Upload/Images/" + urlImage + " class='img_pro' /></div>");
+                }, error: function (err) {
+                    alert("Có lỗi xảy ra vui lòng thử lại" + err.statusText);
+                }
+
+            });
+        });
+</script>*@
+
+<script>
+
+    $('.select-image,.change_image').click(function () {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (url) {
+            $('.noset-image').hide();
+            $('#hidProductID').val(url);
+            $('.change_image').css("display","block");
+            $('#image_showed').attr("src", url);
+            $('.delete_imgavt').css("display", "block");
+
+        };
+
+        $('.delete_imgavt').click(function () {
+            $('#image_showed').removeAttr("src");
+            $(this).hide();
+            $('.change_image').css("display", "none");
+            $('.noset-image').show();
+        });
+        finder.popup();
+    });
+</script>
+
+<script>
+
+        $("#ProductName").keyup(function () {
+        var Text = $(this).val();
+        Text = Text.toLowerCase();
+        $("#Alias").val(convertToSlug(Text));
+        $("#MetaTitle").val($(this).val());
+    });
+
+        $("#ProductName").mouseout(function () {
+            var Text = $(this).val();
+            Text = Text.toLowerCase();
+            $("#Alias").val(convertToSlug(Text));
+            $("#MetaTitle").val($(this).val());
+        });
+</script>

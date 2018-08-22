@@ -1,0 +1,104 @@
+﻿
+@foreach (var item in ViewBag.all_data_config)
+{
+    if (item.on_work_time == true)
+    {
+
+<div class="work-quytrinh">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+
+                <h3>@item.title_work</h3>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 nopadding">
+                <div class="panel maudo">
+                    <div class="panel-body">
+                        01
+                    </div>
+                    <div class="panel-footer">
+                        <img src="@item.icon_work_1" alt="icon 1">
+                        <h5>@item.titile_block_work1</h5>
+                        <p>@item.content_block_work1</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 nopadding">
+                <div class="panel mauxanhduong">
+                    <div class="panel-body">
+                        02
+                    </div>
+                    <div class="panel-footer">
+                        <img src="@item.icon_work_2" alt="icon 2">
+                        <h5>@item.titile_block_work2</h5>
+                        <p>@item.content_block_work2</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 nopadding">
+                <div class="panel mauvang">
+                    <div class="panel-body">
+                        03
+                    </div>
+                    <div class="panel-footer">
+                        <img src="@item.icon_work_3" alt="icon 3">
+                        <h5>@item.titile_block_work3</h5>
+                        <p>@item.content_block_work3</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 nopadding">
+                <div class="panel mauxanh">
+                    <div class="panel-body">
+                        04
+                    </div>
+                    <div class="panel-footer">
+                        <img src="@item.icon_work_4" alt="icon 4">
+                        <h5>@item.titile_block_work4</h5>
+                        <p>@item.content_block_work4</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+    }
+}

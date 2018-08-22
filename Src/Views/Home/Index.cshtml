@@ -1,0 +1,132 @@
+﻿
+@{
+    foreach (var item in ViewBag.config_home)
+    {
+        ViewBag.MetaTittes = item.MetaTitle;
+        ViewBag.MetaKeyword = item.MetaKeyword;
+        ViewBag.MetaDescription = item.MetaDescription;
+    }
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+
+@section slider{
+    @Html.Action("Slider", "home")
+}
+
+
+
+
+@RenderPage("~/Views/Home/Section_why.cshtml")
+
+@RenderPage("~/Views/Home/Section_intro.cshtml")
+
+
+
+
+<!-- end cụm thứ 1 -->
+<!--product of me-->
+
+@RenderPage("~/Views/Home/Section_product_home.cshtml")
+
+<!-- end-->
+
+
+
+<script>
+$(document).ready(function(){
+	$('#product_owl_home').owlCarousel({
+				items:3,
+				nav:true,
+				loop: true,
+				margin: 20,
+				autoplay: true,
+				autoplayTimeout:20000,
+				pagination:true,
+				responsive:{
+				0:{
+				items:2
+				},
+				768:{
+				items:3
+				},
+				992:{
+				items:3
+				},
+				1200:{
+				items:3
+				}
+			}
+	});
+	$('#product_owl_home').find('.owl-next').css({"position":"absolute","right":"5px","top":"40%","padding-left":"5px"}).html("<i class='fa fa-chevron-right'></i>");
+	$('#product_owl_home').find('.owl-prev').css({"position":"absolute","left":"5px","top":"40%","padding-right":"0px"}).html("<i class='fa fa-chevron-left'></i>");
+	$(window).resize();
+});
+</script>
+
+
+<!--begin-->
+@RenderPage("~/Views/Home/Section_work.cshtml")
+<!--end-->
+
+
+
+
+<!--start-->
+@RenderPage("~/Views/Home/Section_news_video.cshtml")
+<!--end-->
+
+
+
+
+
+
+
+<!--begin-->
+@RenderPage("~/Views/Home/Section_customer_say.cshtml")
+<!--end-->
+
+
+
+
+@section partner{
+    @Html.Action("Partner", "home")
+}
+
+
+<script>
+$(document).ready(function(){
+    $('#partner_vendor').owlCarousel({
+				items:2,
+				nav:true,
+				loop: true,
+				margin: 20,
+				autoplay: true,
+				autoplayTimeout:10000,
+				pagination:true,
+				responsive:{
+				0:{
+				items:2
+				},
+				768:{
+				items:4
+				},
+				992:{
+				items:5
+				},
+				1200:{
+				items:8
+				}
+			}
+	});
+    $('#partner_vendor').find('.owl-next').html("<i class='fa fa-angle-right'></i>");
+    $('#partner_vendor').find('.owl-prev').html("<i class='fa fa-angle-left'></i>");
+	$(window).resize();
+});
+</script>

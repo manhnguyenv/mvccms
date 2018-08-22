@@ -1,0 +1,13 @@
+﻿namespace DesignWeb_Project.Areas.Admin.Models.ViewModel
+{
+    public class MenuModel
+    {
+        public int MenuID { get; set; }
+
+        public int MenuParents { get; set; }
+
+        public string MenuName { get; set; }
+
+        public string PageContent { get; set; }
+    }
+}

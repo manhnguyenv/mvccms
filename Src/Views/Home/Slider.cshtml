@@ -1,0 +1,83 @@
+﻿@model IEnumerable<DesignWeb_Project.Areas.Admin.Models.DataModel.Slide>
+
+<div id="banner" class="hidden-xs">
+    <div id="banner-page ">
+        <div class="rev_slider_wrapper">
+            <!-- START REVOLUTION SLIDER 5.0.7 auto mode -->
+            <div id="main-banner-slider-two" class="rev_slider" data-version="5.0.7">
+                <ul>
+                    @{ int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <li class="sikder_@i" data-index="rs-@i" data-transition="zoomout" data-slotamount="default" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000" data-rotate="0" data-thumb="@item.Images" data-saveperformance="off" data-title="Xem" data-description="">
+                            <!-- MAIN IMAGE -->
+                            <img src="@item.Images" alt="" class="rev-slidebg" data-bgparallax="3" data-bgposition="center center" data-duration="20000" data-ease="Linear.easeNone" data-kenburns="on" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="140">
+                            <!-- LAYERS -->
+                            <!-- LAYER NR. 1 -->
+                            <div class="slide-top">
+
+                                <div class="tp-caption banner-title"
+                                     data-x="['left','left','left','left']" data-hoffset="['0','25','35','15']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['-18','-18','40','-130']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:[100%];"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="1000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 6; white-space: nowrap;">
+                                    <h1><span style="color: #234690">@item.SliderName</span><br><span style="color: #ffb504">@item.SliderName2</span></h1>
+                                </div>
+
+                                <!-- LAYER NR. 2 -->
+                                <div class="tp-caption banner-content"
+                                     data-x="['left','left','left','left']" data-hoffset="['0','25','35','15']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['100','100','140','-35']"
+                                     data-width="none"
+                                     data-height="none"
+                                     data-whitespace="nowrap"
+                                     data-transform_idle="o:1;"
+                                     data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;"
+                                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                                     data-mask_in="x:0px;y:[100%];"
+                                     data-mask_out="x:inherit;y:inherit;"
+                                     data-start="2000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on"
+                                     style="z-index: 6; white-space: nowrap;">
+                                    <h5><span class="silder_des_@i" style="color: #333333">@Html.Raw(item.Description)</h5>
+                                </div>
+
+                                <!-- LAYER NR. 3 -->
+                                <div class="tp-caption banner-btn"
+                                     data-x="['left','left','left','left']" data-hoffset="['0','25','35','15']"
+                                     data-y="['middle','middle','middle','middle']" data-voffset="['190','190','250','80']"
+                                     data-transform_idle="o:1;"
+                                     data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;"
+                                     data-transform_in="x:[-100%];z:0;rX:0deg;rY:0deg;rZ:0deg;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2500;e:Power3.easeInOut;"
+                                     data-transform_out="auto:auto;s:1000;e:Power2.easeInOut;"
+                                     data-start="3000"
+                                     data-splitin="none"
+                                     data-splitout="none"
+                                     data-responsive_offset="on">
+                                    @if (item.SliderName != null || item.SliderName2 != null || item.Description != null)
+                                    {
+                                        <a href="@item.URL" class="service-button p-color-bg hvr-bounce-to-right">TÌM HIỂU NGAY</a>
+                                    }
+                                </div>
+                            </div>
+                        </li>
+                        i++;
+                    }
+                </ul>
+            </div>
+        </div><!-- END REVOLUTION SLIDER -->
+    </div>
+</div> <!--  /#banner -->

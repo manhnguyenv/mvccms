@@ -1,0 +1,275 @@
+@media (min-width:992px) {
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+@media (max-width:1800px) {
+    .our-service:before {
+        display: none;
+    }
+}
+
+@media (max-width:1366px) {
+    .scroll-top {
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media (max-width:1199px) {
+    .theme-manage-area .col-md-6 {
+        margin-bottom: 40px;
+    }
+    .service-details-page .service-side-bar .wrapper {
+        padding-right: 0;
+    }
+    .service-details-page .service-details-content .bottom-text .clear-fix img {
+        width: 48%;
+    }
+    .project-details .project-details-text .project-content-text {
+        padding-left: 15px;
+    }
+}
+
+@media (max-width:991px) {
+    .theme-manage-area .col-md-6 {
+        min-height: 355px;
+    }
+    .feature-work .feature-item-wrapper .item .img-holder img,
+    .our-team .effect-oscar img,
+    .company-history .left-side,
+    .company-history .right-side {
+        width: 100%;
+    }
+    .company-history .history-panel {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+    .company-progress .opacity h4 {
+        margin-bottom: 20px;
+    }
+    .newsletter .text {
+        width: 100%;
+        float: none;
+        padding-left: 70px;
+    }
+    .newsletter .float-right {
+        width: 100%;
+        float: none;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+    .newsletter .p-color-bg {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .newsletter .text i {
+        left: 0;
+    }
+    
+   
+    .short-banner h3,
+    .short-banner a {
+        float: none;
+        margin: 10px 0;
+    }
+    .short-banner {
+        text-align: center;
+    }
+       .logo{
+    	text-align: center;
+    	float: none;
+    }
+    
+}
+
+@media (min-width:992px) and (max-width:1199px) {
+    header .bottom-header .single-content ul,
+    header .bottom-header .single-content.bar-fix:before {
+        display: none;
+    }
+    header .bottom-header .single-content {
+        margin-left: 0;
+    }
+    header .bottom-header .single-content.bar-fix {
+        padding-right: 0;
+        margin-left: 35px;
+    }
+    .main-menu .request-quote {
+        font-size: 14px;
+        width: 230px;
+    }
+    .main-menu .nav>li>a {
+        padding: 0 15px;
+    }
+    .short-banner h3 {
+        font-size: 24px;
+    }
+    
+}
+
+@media (min-width:768px) and (max-width:991px) {
+    header .bottom-header .single-content.bar-fix {
+        margin-left: 0;
+        margin-right: 25px;
+    }
+    header .bottom-header .single-content {
+        margin-left: 0;
+    }
+    .main-menu .request-quote {
+        display: none;
+    }
+    .main-menu .nav>li>a {
+        padding: 0 15px;
+        font-size: 15px;
+    }
+
+
+
+    
+}
+
+@media (max-width:767px) {
+    .main-menu.fixed {
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    header .top-header .left-side,
+    header .top-header .right-side {
+        float: none;
+        text-align: center;
+    }
+    header .top-header .right-side {
+        margin-top: 20px;
+    }
+    header .bottom-header .single-content.bar-fix:before,
+    .main-menu .nav>li>a:before,
+    .main-menu .nav>li>a:after {
+        display: none;
+    }
+    header .bottom-header .single-content {
+        margin-left: 0;
+    }
+    header .bottom-header .single-content.bar-fix {
+        padding-right: 0;
+        margin-left: 35px;
+    }
+    header .bottom-header .right-side {
+        float: none;
+        display: none
+    }
+    header .bottom-header .single-content,
+    header .bottom-header .single-content.bar-fix {
+        float: none;
+        margin: 0 0 10px 0;
+        text-align: center;
+        padding: 0;
+    }
+    header .bottom-header .single-content .ficon {
+        display: block;
+        position: relative;
+    }
+    .main-menu nav ul li.dropdown-holder .fa {
+        display: block;
+    }
+    .main-menu .request-quote {
+        right: 15px;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .main-menu .nav>li>a {
+        padding: 0 0 0 15px;
+        line-height: 42px;
+        font-size: 15px;
+    }
+    .main-menu .navbar-nav>li.dropdown-holder .sub-menu {
+        display: none;
+        width: 100%;
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: none;
+        -moz-transition: none;
+        -ms-transition: none;
+        -o-transition: none;
+        transition: none;
+        -webkit-transform: scaleY(1);
+        -moz-transform: scaleY(1);
+        -ms-transform: scaleY(1);
+        -o-transform: scaleY(1);
+        transform: scaleY(1);
+    }
+    
+}
+
+
+
+@media (max-width:550px) {
+    .inner-banner .opacity h2,
+    .inner-banner .opacity ul {
+        float: none;
+        text-align: center;
+    }
+    .inner-banner .opacity h2 {
+        display: inline-block;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+    .inner-banner .opacity {
+        padding: 75px 0;
+    }
+    .service-details-page .service-details-content .tab-pane>img {
+        margin-bottom: 40px;
+    }
+    .service-details-page {
+        padding-top: 80px;
+    }
+    .project-page .mix,
+    .project-page .mix img {
+        width: 100%;
+    }
+    .project-item-wrapper figure.effect-zoe p.description {
+        bottom: 67px;
+        padding: 0;
+    }
+    #banner h1 {
+        font-size: 29px;
+        line-height: 36px;
+    }
+    #banner h5 {
+        font-size: 11px;
+    }
+    .project-details {
+        margin-top: 20px;
+    }
+    //.inner-banner {margin-top: 0px!important;}
+    h3.title-article a {
+        padding-top: 15px!important;
+    }
+}
+
+
+
+
+@media (max-width:450px) {
+    .main-menu .request-quote {
+        width: 190px;
+        font-size: 14px;
+    }
+    .main-menu .request-quote span {
+        width: 40px;
+    }
+    .main-menu .request-quote span i {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+    }
+    .main-menu .request-quote span i:before {
+        font-size: 12px;
+    }
+    
+}
+

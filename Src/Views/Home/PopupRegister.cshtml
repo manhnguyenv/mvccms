@@ -1,0 +1,137 @@
+﻿
+            <!--POPUP-->
+<div id="insPopupNewletter" class="newletter-popup engo-popup">
+    <div class="overlay"></div>
+    <div class="content">
+        <div id="popup-newletter" class="">
+            <div class="pa-header">
+                <h3 class="">
+                    Đăng ký dùng thử dịch vụ  thông tin ưu đãi của sản phẩm bạn đang  quan tâm.
+                </h3>
+                <div class="pnewle-message">
+                    <p> Vui lòng để lại thông tin của bạn! Tư vấn của chúng tôi sẽ sớm liên hệ lại với bạn để gửi thông tin về các sản phẩm bạn đang quan tâm. </p>
+
+                </div>
+                <div class="form-register-product">
+                    <form>
+                        <div class="form-group">
+                            <label for="txt_product">Sản phẩm bạn quan tâm</label>
+                            <select class="form-control" id="select_product">
+                                <option value="">---Chọn sản phẩm bạn quan tâm---</option>
+                                @foreach (var item in ViewBag.product)
+                                {
+                                    <option value="@item.ProductID">@item.ProductName</option>
+                                }
+
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_name">Tên của bạn</label>
+                            <input type="text" required class="form-control" id="txt_fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_phone">Số điện thoại</label>
+                            <input type="text" required class="form-control" id="txt_phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="txt_email">Email</label>
+                            <input type="email" required class="form-control" id="txt_email">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" value="Gửi Thông Tin" id="send_information">
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <a href="javascript:void(0)" class="close_newletter closePopup">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="success_register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom:none;">
+                <h4 class="modal-title" id="myModalLabel" style="float:left;">THÔNG BÁO</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="txt_seccess">
+                    CẢM ƠN BẠN ĐÃ ĐĂNG KÍ SỬ DỤNG PHẦN MỀM CỦA CHÚNG TÔI.CHÚNG TÔI SẼ LIÊN HỆ CHO BẠN SỚM NHẤT
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+jQuery(document).ready(function($){
+	setTimeout(function(){
+		if(sessionStorage.mega_popup == null ){
+			sessionStorage.mega_popup = 'show' ;
+			$('#insPopupNewletter').addClass('active');
+			$('body').addClass('overlay_hidden');
+		}
+	}, 500)
+
+
+	$('#send_information').click(function () {
+
+	    if ($('#select_product').val() == '') {
+	        alert("Mời bạn chọn sản phẩm bạn đang quan tâm tới");
+	    } else {
+
+	        $.ajax({
+	            type: 'POST',
+	            dataType: 'Json',
+	            url: '@Url.Action("RegisterUse", "home")',
+	            data: {
+	                fullname: $('#txt_fullname').val(),
+	                phone: $('#txt_phone').val(),
+	                email: $('#txt_email').val(),
+	                productid: $('#select_product').val()
+
+	            },
+	            success: function (data) {
+	                $('#txt_fullname').text('');
+	                $('#txt_phone').text('');
+	                $('#txt_email').text('');
+	                $('#select_product').val('');
+	                $('#insPopupNewletter').removeClass('active');
+	                $('#success_register').modal();
+	            },
+	            error: function (err) {
+	                alert('Error');
+	            }
+	        });
+	    }
+
+
+
+
+	});
+
+
+});
+$(document).on('click','.close_newletter', function(e){
+	e.preventDefault();
+	$('#insPopupNewletter').removeClass('active');
+	$('body').removeClass('overlay_hidden');
+})
+</script>
+
+<script type="text/javascript">
+	$('.button-register').click(function(){
+		$('#insPopupNewletter').addClass('active');
+		$('body').addClass('overlay_hidden');
+	});
+</script>
+

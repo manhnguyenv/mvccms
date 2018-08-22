@@ -1,0 +1,156 @@
+﻿@foreach (var item in ViewBag.all_data_config)
+{
+    if (item.on_new_video == true)
+    {
+
+        string html = ".html";
+<div class="section_new_video">
+    <div class="container">
+        <div class="box box_news_hot col-xs-12 col-sm-12 col-md-8">
+            <div class="box-title"><h2 class="mid_title_l">@item.title_block_news</h2></div>
+            <div class="box-content">
+
+
+
+                <div class="row">
+                    <div class="news_focus-row row_first col-xs-12 col-md-6">
+                        @{ int i = 1;}
+                        @foreach (var noibat in ViewBag.bloghome)
+                        {
+                            if (i == 1) {
+                        <div class="img">
+                            <a href="/blogs/noibat.Alias_Blog/@noibat.Alias_Article-@noibat.BlogID-@noibat.ArticleID@html" title="@noibat.ArticleName"><img src="@noibat.Images" alt="@noibat.ArticleName" title="@noibat.ArticleName"></a>
+                            <div class="date">
+                                @{ DateTime dateOnly = noibat.CreatedAt;}
+                                <span class="d">@dateOnly.ToString("dd")</span>
+                                <span class="m_y">@dateOnly.ToString("MM/yyyy")</span>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <a href="/blogs/@noibat.Alias_Blog/@noibat.Alias_Article-@noibat.BlogID-@noibat.ArticleID@html" title="@noibat.ArticleName">@noibat.ArticleName</a>
+                            <div class="short"></div>
+                            <div class="btn btn_detail"><a href="/blogs/@noibat.Alias_Blog/@noibat.Alias_Article-@noibat.BlogID-@noibat.ArticleID@html">Chi tiết</a></div>
+                        </div>
+                            }
+                            i++;
+                        }
+                    </div>
+
+                    <div class="news_list col-xs-12 col-md-6">
+                        @{ int j = 1;}
+                    @foreach (var tin in ViewBag.bloghome)
+                    {
+                       DateTime dateOnly2 = tin.CreatedAt;
+                            if (j >= 2)
+                            {
+                        <div class="news_focus-row ">
+                            <div class="date"><span class="d">@dateOnly2.ToString("dd")</span> <span class="m_y">@dateOnly2.ToString("MM/yyyy")</span></div>
+                            <div class="title">
+                                <a href="/blogs/@tin.Alias_Blog/@tin.Alias_Article-@tin.BlogID-@tin.ArticleID@html" title="@tin.ArticleName">@tin.ArticleName</a>
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+                        }
+                        j++;
+                    }
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="box video_clip col-xs-12 col-sm-12 col-md-4">
+            <div class="box-title"><h2 class="mid_title_l">@item.title_block_video</h2></div>
+            <div class="box-content">
+                <div class="item video-img row_first">
+
+                    @if (item.video_iframe1 != null)
+                    {
+                    <div class="video_item">
+                        <div class="wrap">
+                            <iframe width="100%" height="230" src="https://www.youtube.com/embed/@item.video_iframe1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    }
+                </div>
+
+                <div class="list_video">
+
+
+
+                    @if (item.video_iframe2 != null)
+                    {
+                    <div class="video_item">
+                        <a class="ifancybox_video" data-video="@item.video_iframe2"  href="javascript::0">
+                            <img src="@item.images_video_2" alt="video_image">
+                        </a>
+                    </div>
+                    }
+
+                    @if (item.video_iframe3 != null)
+                    {
+                    <div class="video_item">
+                        <a class="ifancybox_video" data-video="@item.video_iframe3" href="javascript::0">
+                            <img src="@item.images_video_3" alt="video_image">
+                        </a>
+                    </div>
+                    }
+                    @if (item.video_iframe4 != null)
+                    {
+                    <div class="video_item">
+                        <a class="ifancybox_video" data-video="@item.video_iframe4" href="javascript::0">
+                            <img src="@item.images_video_4" alt="video_image">
+                        </a>
+                    </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+             <div class="modal fade bs-example-modal-lg" id="video_popup" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <a href="javascript::0" class="close_button" data-dismiss="modal" aria-label="Close">
+                                                <img src="~/Content/PMKT/image/icon_close.png" alt="close">
+                                            </a>
+                                        </div>
+                                        <div class="modal-body">
+                                           <div id="show_video"></div>
+                                        </div>
+                                    </div>
+                    </div>
+               </div>
+
+
+
+               <script>
+
+                   $(document).ready(function () {
+                       $('.ifancybox_video').click(function () {
+                           $('#video_popup #show_video').html('');
+                           var url = $(this).data('video');
+                           $('#video_popup').modal('show');
+                           $('#video_popup #show_video').html('<iframe width="100%" height="480" src="https://www.youtube.com/embed/'+url+'" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+                       });
+                   });
+               </script>
+
+
+
+                                }
+                            }

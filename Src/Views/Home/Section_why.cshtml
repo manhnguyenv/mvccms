@@ -1,0 +1,17 @@
+﻿@foreach (var item in ViewBag.all_data_config)
+{
+    if (item.on_block_slogan == true)
+    {
+
+<div class="short-banner">
+    <div class="opacity">
+        <div class="container">
+            <h3 title="@item.title_sologan" class="float-left">@item.title_sologan</h3>
+            <a href="@item.button_more_slogan" class="float-right theme-button">TÌM HIỂU THÊM</a>
+        </div>
+    </div>
+</div>
+
+
+    }
+}

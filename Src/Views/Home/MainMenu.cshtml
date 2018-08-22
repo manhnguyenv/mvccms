@@ -1,0 +1,85 @@
+﻿@model List<DesignWeb_Project.Areas.Admin.Models.DataModel.MenuNavigation>
+
+@{ string html = ".html"; }
+<div class="main-menu">
+    <div class="container">
+        <!-- Menu -->
+        <nav class="navbar">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+                    @foreach (var item in Model)
+                    {
+
+                        <li>
+                            @{
+                                if (item.PageStyle == 1)
+                                {
+
+                                    if (item.FormatPage == 1)
+                                    {
+                                        foreach (var cate in ViewBag.get_category)
+                                        {
+                                            if (item.MenuID == cate.MenuID)
+                                            {
+                                                <a href="/categories/@cate.Alias_Cate-@cate.CategoryID@html" title="@cate.MenuName">
+                                                    @cate.MenuName
+                                                </a>
+                                            }
+                                        }
+                                    }
+                                    else if (item.FormatPage == 2)
+                                    {
+                                        foreach (var blog in ViewBag.get_blog)
+                                        {
+                                            if (item.MenuID == blog.MenuID)
+                                            {
+                                                <a href="/blogs/@blog.Alias_Blog-@blog.BlogID@html" title="@blog.MenuName">
+                                                    @blog.MenuName
+                                                </a>
+                                            }
+                                        }
+                                    }
+                                }
+                                else if (item.PageStyle == 2)
+                                {
+                                    <a href="/pages/@item.MenuID/@item.MenuName" title="@item.MenuName">
+                                        @item.MenuName
+                                    </a>
+                                }
+                                else if (item.PageStyle == 3)
+                                {
+                                    <a href="@item.PageLink" title="@item.MenuName">
+                                        @item.MenuName
+                                    </a>
+                                }
+                                else if (item.PageStyle == 4)
+                                {
+                                    <a href="/pages/lien-he.html" title="@item.MenuName">
+                                        @item.MenuName
+                                    </a>
+                                }
+
+                            }
+
+                            @Html.Action("LoadParent", "Home", new { id = item.MenuID })
+                        </li>
+
+                    }
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <a href="javascript::0" class="tran3s request-quote p-color-bg button-register">Trải nghiệm ngay <span><i class="ficon flaticon-arrows"></i></span></a>
+    </div> <!-- /.container -->
+</div> <!-- /.main-menu -->

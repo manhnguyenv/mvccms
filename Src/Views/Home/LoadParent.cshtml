@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DesignWeb_Project.Areas.Admin.Models.DataModel.MenuNavigation>
+
+@if ((int)ViewBag.count > 0)
+{
+    string html = ".html";
+    <i class="fa fa-angle-down" aria-hidden="true"></i>
+    <ul class="sub-menu">
+
+        @foreach (var item2 in Model)
+        {
+            <li class="menu_sub_li">
+                @{
+                    if (item2.PageStyle == 1)
+                    {
+
+                        if (item2.FormatPage == 1)
+                        {
+                            foreach (var cate in ViewBag.get_category)
+                            {
+                                if (item2.MenuID == cate.MenuID)
+                                {
+                                    <a href="/categories/@cate.Alias_Cate-@cate.CategoryID@html" title="@cate.MenuName">
+                                        <span>@cate.MenuName</span>
+                                    </a>
+                                }
+                            }
+                        }
+                        else if (item2.FormatPage == 2)
+                        {
+                            foreach (var blog in ViewBag.get_blog)
+                            {
+                                if (item2.MenuID == blog.MenuID)
+                                {
+                                    <a href="/blogs/@blog.Alias_Blog-@blog.BlogID@html" title="@blog.MenuName">
+                                        <span>@blog.MenuName</span>
+                                    </a>
+                                }
+                            }
+                        }
+                    }
+                    else if (item2.PageStyle == 2)
+                    {
+                        <a href="/pages/@item2.MenuID/@item2.MenuName" title="@item2.MenuName" class="">
+                            <span>@item2.MenuName</span>
+                        </a>
+                    }
+                    else if (item2.PageStyle == 3)
+                    {
+                        <a href="@item2.PageLink" title="@item2.MenuName">
+                            <span>@item2.MenuName</span>
+                        </a>
+                    }
+                    else if (item2.PageStyle == 4)
+                    {
+                        <a href="/pages/lien-he.html" title="@item2.MenuName">
+                            @item2.MenuName
+                        </a>
+                    }
+
+                }
+            </li>
+        }
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $('.menu_sub_li').parents().addClass('dropdown-holder');
+        });
+    </script>
+}

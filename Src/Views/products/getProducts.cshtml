@@ -1,0 +1,201 @@
+﻿@model List<DesignWeb_Project.Models.ProductModel>
+@{ string html = ".html"; }
+@foreach (var item in Model)
+{
+    ViewBag.Title = item.ProductName;
+
+    if (item.MetaTitle != null)
+    {
+        ViewBag.MetaTittes = item.MetaTitle;
+    }
+    else
+    {
+        foreach (var meta in ViewBag.config_meta)
+        {
+            ViewBag.MetaTittes = meta.MetaTitle;
+        }
+
+    }
+    if (item.MetaKeyword != null)
+    {
+        ViewBag.MetaKeyword = item.MetaKeyword;
+    }
+    else
+    {
+        foreach (var meta in ViewBag.config_meta)
+        {
+            ViewBag.MetaKeyword = meta.MetaKeyword;
+        }
+
+    }
+    if (item.MetaDescription != null)
+    {
+        ViewBag.MetaDescription = item.MetaDescription;
+    }
+    else
+    {
+        foreach (var meta in ViewBag.config_meta)
+        {
+            ViewBag.MetaDescription = meta.MetaDescription;
+        }
+
+    }
+
+    <div class="inner-banner">
+        <div class="opacity">
+            <div class="container">
+                <h2 title="@item.ProductName" class="float-left">@item.ProductName</h2>
+                <ul class="float-right">
+                    <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+
+                    @foreach (var breadcub in ViewBag.getbread)
+                    {
+                        <li>/</li>
+                        <li><a href="/categories/@breadcub.Alias_Category-@breadcub.CategoryID">@breadcub.Category_Name@html</a></li>
+                    }
+
+                    <li>/</li>
+                    <li class="active">@item.ProductName</li>
+                </ul>
+            </div> <!-- /.container -->
+        </div> <!-- /.opacity -->
+    </div>
+
+    <section id="product-wrapper" style="margin-top: 30px;">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-md-3">
+
+                    <div class="blog-sidebar">
+
+                        <div class="list-categories">
+                            <div class="blog-sb-title clearfix">
+                                <h3>
+                                    Danh sách sản phẩm
+                                </h3>
+                            </div>
+                            <ul class="no-bullets">
+
+                                @foreach (var product in ViewBag.product_blog)
+                                {
+                                    <li class="">
+                                        <a href="/products/@product.Alias_Product-@product.CategoryID-@product.ProductID@html"><i class="fa fa-angle-double-right"></i> @product.ProductName</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="list-categories">
+                            <div class="blog-sb-title clearfix">
+                                <h3>
+                                    Danh mục bài viết
+                                </h3>
+                            </div>
+                            <ul class="no-bullets">
+
+                                @foreach (var blogdm in ViewBag.all_danhmuc)
+                                {
+                                    <li class="">
+                                        <a href="/blogs/@blogdm.Alias-@blogdm.BlogID"><i class="fa fa-angle-double-right"></i> @blogdm.BlogName</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="all-tags">
+                            <div class="blog-sb-title clearfix">
+                                <h3>
+                                    Bài viết mới nhất
+                                </h3>
+                            </div>
+                            <div class="all-blog-new clearfix">
+
+                                @foreach (var newblog in ViewBag.getBlogNew)
+                                {
+                                    <div class="row col-span-blog-new">
+                                        <div class="col-xs-4">
+                                            <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID"><img src="@newblog.Images" alt=""></a>
+                                        </div>
+                                        <div class="col-xs-8">
+                                            <a href="/blogs/@newblog.Alias_Blog/@newblog.Alias_Article-@newblog.BlogID-@newblog.ArticleID" class="title_new_blogs">@newblog.ArticleName</a>
+                                            <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> @newblog.CreatedAt</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-9">
+
+                    <div class="product-content">
+                        <div class="product-title-hanls">
+                            <h3>@item.ProductName</h3>
+                        </div>
+
+                        <div class="tab-product-description">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">THÔNG TIN SẢN PHẨM</a></li>
+                                <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">TÍNH NĂNG</a></li>
+                                <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab">VIDEO</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="tab1">
+                                    @Html.Raw(item.Content)
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="tab2">
+                                    @Html.Raw(item.Content2)
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="tab3">
+                                    @Html.Raw(item.Content3)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="comment-user"></div>
+
+                        <div class="product-related">
+                            <div class="title_related_product">
+                                <h3>SẢN PHẨM LIÊN QUAN</h3>
+                            </div>
+
+                            <div class="category-content">
+                                <div class="row">
+                                    @{
+                                        int i = 0;
+                                        foreach (var related in ViewBag.product_related)
+                                        {
+                                            i += 1;
+                                            if (related.Alias_Product != item.Alias_Product)
+                                            {
+                                                <div class="col-xs-12 col-sm-6 col-md-4">
+                                                    <div class="product-image">
+                                                        <a href="/products/@related.Alias_Product-@related.CategoryID-@related.ProductID@html"><img src="@related.Images" alt="@related.ProductName"></a>
+                                                    </div>
+                                                    <div class="product-action">
+                                                        <h3 class="product-name"><a href="">@related.ProductName</a></h3>
+                                                        <p class="description">@related.DescriptShort</p>
+                                                    </div>
+                                                </div>
+                                                if (i % 3 == 0)
+                                                {
+                                                    <div class="clear-fix"></div>
+                                                }
+                                            }
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}

@@ -1,0 +1,132 @@
+﻿
+@foreach (var item in ViewBag.all_data_config)
+{
+    if (item.on_block_intro == true)
+    {
+<div class="awe-section-intro">
+    <div class="constructo-aboutUs-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div class="section-title">
+                        <h2>@item.title_intro</h2>
+                        <p>@item.des_more_intro</p>
+                        <div class="line">
+                            <img src="~/Content/PMKT/image/line.png" alt="line">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row padding-top">
+                <div class="col-sm-12 col-md-6">
+                    <div class="aboutUs-img">
+                        <img src="@item.images_intro_1" alt="image_intro">
+                    </div>
+                    <div class="about-img2 hidden-xs">
+                        <img src="@item.images_intro_2" alt="image_intro">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-5 col-md-offset-1">
+                    <div class="constructo-aboutUs-content">
+                        <p>
+                           @item.content_intro
+                        </p>
+
+                        <div class="row">
+
+
+
+
+                            <div class="col-sm-6 text-left">
+                                <div class="about-list">
+                                    <ul>
+                                        @if (item.text_intro1 != null)
+                                        {
+                                        <li>@item.text_intro1</li>
+                                        }
+
+
+                                        @if (item.text_intro2 != null)
+                                        {
+                                        <li>@item.text_intro2</li>
+                                        }
+
+
+                                        @if (item.text_intro3 != null)
+                                        {
+                                        <li>@item.text_intro3</li>
+                                        }
+
+
+
+                                        @if (item.text_intro4 != null)
+                                        {
+                                        <li>@item.text_intro4</li>
+                                        }
+
+
+
+                                        @if (item.text_intro5 != null)
+                                        {
+                                        <li>@item.text_intro5</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-sm-6 text-left">
+                                <div class="about-list">
+                                    <ul>
+
+                                        @if (item.text_intro6 != null)
+                                        {
+                                        <li>@item.text_intro6</li>
+                                        }
+
+
+
+                                        @if (item.text_intro7 != null)
+                                        {
+                                        <li>@item.text_intro7</li>
+                                        }
+
+
+
+                                        @if (item.text_intro8 != null)
+                                        {
+                                        <li>@item.text_intro8</li>
+                                        }
+
+
+
+                                        @if (item.text_intro9 != null)
+                                        {
+                                        <li>@item.text_intro9</li>
+                                        }
+
+
+
+                                        @if (item.text_intro10 != null)
+                                        {
+                                        <li>@item.text_intro10</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <a href="@item.button_more_intro" class="btn-readmor">Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+    }
+}

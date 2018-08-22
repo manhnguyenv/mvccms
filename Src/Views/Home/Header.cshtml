@@ -1,0 +1,53 @@
+﻿@model List<DesignWeb_Project.Areas.Admin.Models.DataModel.Configure>
+
+<div class="header-style-two ">
+    @foreach (var item in Model)
+    {
+        <header class="main-header">
+
+            <div class="bottom-header">
+                <div class="container">
+                    <div class="logo float-left"><a href="/" style="vertical-align:middle;"><img src="@item.Logo" alt="@item.NameCompany"></a></div>
+
+                    <div class="right-side float-right">
+                        <div class="single-content float-left bar-fix">
+                            <i class="ficon flaticon-call-solid"></i>
+                            <p>@item.Phone</p>
+                            <span>@item.Email</span>
+                        </div> <!-- /.single-content -->
+
+                        <div class="single-content float-left bar-fix sicl">
+                            <i class="ficon flaticon-map-solid"></i>
+                            <p>@item.NameCompany</p>
+                            <span>@item.Address</span>
+                        </div> <!-- /.single-content -->
+
+                        <div class="single-content float-left mFix sicl">
+                            <ul>
+                                @if (item.IconFacebook != null)
+                                {
+                                    <li><a href="@item.IconFacebook" class="tran3s round-border icon"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                }
+                                @if (item.IconTwiiter != null)
+                                {
+                                    <li><a href="@item.IconTwiiter" class="tran3s round-border icon"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                }
+                                @if (item.IconGoogle != null)
+                                {
+                                    <li><a href="@item.IconGoogle" class="tran3s round-border icon"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                }
+                                @if (item.IconInstagram != null)
+                                {
+                                    <li><a href="@item.IconInstagram" class="tran3s round-border icon"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                }
+                            </ul>
+                        </div> <!-- /.single-content -->
+                    </div> <!-- /.right-side -->
+                </div> <!-- /.container -->
+            </div> <!-- /.bottom-header -->
+        </header>
+    }
+
+    <!-- Theme Main Menu ____________________________ -->
+    @{ Html.RenderAction("MainMenu", "home");}
+</div>

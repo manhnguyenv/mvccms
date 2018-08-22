@@ -1,0 +1,174 @@
+﻿@model List<DesignWeb_Project.Areas.Admin.Models.DataModel.Configure>
+
+@foreach (var item in Model)
+{
+
+<footer>
+    <div class="opacity">
+        <div class="top-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer-logo float-left">
+                            <div class="text-center">
+                                <a href="/"><img src="@item.Logo" alt="logo-footer"></a>
+                            </div>
+                            <p>
+                                @item.Description
+                            </p>
+                            <div class="footer-address float-left footer-link">
+                                <h4>@item.title_block_address</h4>
+                                <ul>
+                                    <li><span class="fa fa-home"></span> <p>@item.Address</p></li>
+                                    <li><span class="fa fa-phone"></span><p> @item.Hotline</p></li>
+                                    <li><span class="fa fa-mobile"></span> <p>@item.Phone</p></li>
+                                    <li><span class="fa fa-envelope"></span> <p>@item.Email</p></li>
+                                </ul>
+                            </div>
+                        </div> <!-- /.footer-logo -->
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer-link float-left">
+                            <h4>@item.title_block_description_1</h4>
+                            <ul class="tran3s">
+
+                                @if (item.link_name_des_1 != null || item.link_href_des_1 != null)
+                                {
+                                <li class="item">
+                                    <a href="@item.link_href_des_1" title="@item.link_name_des_1" class="tran3s">@item.link_name_des_1</a>
+                                </li>
+                                }
+                                @if (item.link_name_des_2 != null || item.link_href_des_2 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2" title="@item.link_name_des_2" class="tran3s">@item.link_name_des_2</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_3 != null || item.link_href_des_3 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_3" title="@item.link_name_des_3" class="tran3s">@item.link_name_des_3</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_4 != null || item.link_href_des_4 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_4" title="@item.link_name_des_4" class="tran3s">@item.link_name_des_4</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_5 != null || item.link_href_des_5 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_5" title="@item.link_name_des_5" class="tran3s">@item.link_name_des_5</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_6 != null || item.link_href_des_6 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_6" title="@item.link_name_des_6" class="tran3s">@item.link_name_des_6</a>
+                                    </li>
+                                }
+                            </ul>
+                            <h4 class="link2">@item.title_block_description2_1</h4>
+                            <ul class="tran3s">
+
+                                @if (item.link_name_des_2_1 != null || item.link_href_des_2_1 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_1" title="@item.link_name_des_2_1" class="tran3s">@item.link_name_des_2_1</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_2_2 != null || item.link_href_des_2_2 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_2" title="@item.link_name_des_2_2" class="tran3s">@item.link_name_des_2_2</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_2_3 != null || item.link_href_des_2_3 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_3" title="@item.link_name_des_2_3" class="tran3s">@item.link_name_des_2_3</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_2_4 != null || item.link_href_des_2_4 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_4" title="@item.link_name_des_2_4" class="tran3s">@item.link_name_des_2_4</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_2_5 != null || item.link_href_des_2_5 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_5" title="@item.link_name_des_2_5" class="tran3s">@item.link_name_des_2_5</a>
+                                    </li>
+                                }
+
+                                @if (item.link_name_des_2_6 != null || item.link_href_des_2_6 != null)
+                                {
+                                    <li class="item">
+                                        <a href="@item.link_href_des_2_6" title="@item.link_name_des_2_6" class="tran3s">@item.link_name_des_2_6</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="footer-address footer-link float-left">
+                            <h4>@item.title_dknt </h4>
+                            <p>@item.content_dknt</p>
+                            <form method="post" class="mailchimp-form" action="/account/contact">
+
+                                <div class="input-group">
+                                    <input class="form-control news" type="email" placeholder="Nhập Email" name="contact[email]" id="Email" value="" required="">
+                                    <input type="hidden" name="contact[tags]" value="newsletter">
+                                    <div>
+                                        <input class="btn btn-default" type="submit" name="submit" value="GỬI">
+                                    </div>
+                                </div><!-- /input-group -->
+                                <ul class="social-links">
+                                    @if (item.IconFacebook != null)
+                                    {
+                                        <li><a href="@item.IconFacebook" class="tran3s round-border icon"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    }
+                                    @if (item.IconTwiiter != null)
+                                    {
+                                        <li><a href="@item.IconTwiiter" class="tran3s round-border icon"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    }
+                                    @if (item.IconGoogle != null)
+                                    {
+                                        <li><a href="@item.IconGoogle" class="tran3s round-border icon"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    }
+                                    @if (item.IconInstagram != null)
+                                    {
+                                        <li><a href="@item.IconInstagram" class="tran3s round-border icon"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    }
+                                </ul>
+
+                                <div class="footer-link">
+                                    <h4>@item.title_map</h4>
+                                    <div id="map">@Html.Raw(item.Map)</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /.conatiner -->
+        </div> <!-- /.top-footer -->
+        <div class="bottom-footer clear-fix">
+            <div class="container">
+                <div class="col-lg-6 col-md-6 pil-foyt"><p class="text-left">@item.NameCompany</p></div>
+                <div class="col-lg-6 col-md-6 pil-foyt"><p class="text-right">Designed by VASJ</p></div>
+            </div>
+        </div> <!-- /.bottom-footer -->
+    </div> <!-- /.opacity -->
+</footer>
+
+}

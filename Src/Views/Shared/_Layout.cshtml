@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.MetaTittes</title>
+    <meta name="title" content="@ViewBag.MetaTittes" />
+    <meta name="keywords" content="@ViewBag.MetaKeyword" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    @{Html.RenderAction("Master_Include", "home");}
+
+    <link rel="stylesheet" href="~/Content/PMKT/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/PMKT/awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/PMKT/awesome/flaticon.css">
+    <link rel="stylesheet" href="~/Content/PMKT/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/PMKT/css/navigation.css">
+    <link rel="stylesheet" href="~/Content/PMKT/css/styles.css">
+    <link rel="stylesheet" href="~/Content/PMKT/css/responsive.css">
+    <link rel="stylesheet" href="~/Content/PMKT/css/settings.css">
+    <script src="~/Content/PMKT/js/jquery.min.js"></script>
+    <script src="~/Content/PMKT/js/bootstrap.min.js"></script>
+    <script src="~/Content/PMKT/js/theme.js"></script>
+    <script src='~/Content/PMKT/js/jquery.themepunch.tools.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/jquery.themepunch.revolution.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.slideanims.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.layeranimation.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.navigation.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.kenburn.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.actions.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/revolution.extension.video.min87d9.js' type='text/javascript'></script>
+    <script src='~/Content/PMKT/js/owl.carousel.js' type='text/javascript'></script>
+</head>
+<body>
+    <div class="main-page-wrapper">
+
+        @{Html.RenderAction("Header", "home");}
+
+        @RenderSection("slider", required: false)
+
+        <!--Main page-->
+        <div class="body-content">
+
+            @RenderBody()
+
+            @RenderSection("partner", required: false)
+        </div>
+
+        <button class="scroll-top tran3s p-color p-color2">
+            <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+        </button>
+
+        @{Html.RenderAction("Footer", "home");}
+
+        @{Html.RenderAction("PopupRegister", "home");}
+    </div>
+</body>
+</html>
